@@ -1,8 +1,6 @@
 const target = document.querySelector('.ad-showing')
-console.log('target')
-console.log(target) // ad-showingが含まれたクラス名が出力される。 つまり広告クラス？
+console.log('target' + target) // ad-showingが含まれたクラス名が出力される
 
-const config = { attributes: true, childList: true, subtree: true} 
 
 const observer = new MutationObserver(mutations => {
     // 変化が発生したときの処理
@@ -27,9 +25,9 @@ const observer = new MutationObserver(mutations => {
 
 
 observer.observe(target, {
-    attributes: true,
-    childList: true, 
-    subtree: true
+    attributes: true, //属性変更
+    childList: true, // 子要素変更
+    subtree: true //子孫要素変更
 })
 
 
