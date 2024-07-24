@@ -1,8 +1,10 @@
 const target = document.querySelector('.ad-showing')
-console.log(target)// ad-showingが含まれたクラス名が出力される
+console.log('target') // ad-showingが含まれたクラス名が出力される
+console.log(target)
 
 
 const observer = new MutationObserver(mutations => {
+    // 変化が発生したときの処理
     for (const mutation of mutations) {
         if (mutation.type === 'childList' || mutation.type === 'attributes'){
             const ad = document.querySelector('.ad-showing');
@@ -22,12 +24,14 @@ const observer = new MutationObserver(mutations => {
     }
 })
 
-
-observer.observe(target, {
-    attributes: true,
-    childList: true, 
-    subtree: true 
-})
+// targetがnullかチェック
+if (target) {
+    observer.observe(target, {
+        attributes: true, //属性変更
+        childList: true, // 子要素変更
+        subtree: true //子孫要素変更
+    })
+}
 
 
 
